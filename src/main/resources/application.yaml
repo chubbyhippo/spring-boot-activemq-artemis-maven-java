@@ -4,3 +4,8 @@ spring:
     user: artemis
     password: artemis
     mode: native
+logging:
+  level:
+    org:
+      apache:
+        activemq: debug

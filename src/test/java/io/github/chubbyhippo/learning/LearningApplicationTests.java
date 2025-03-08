@@ -48,7 +48,7 @@ class LearningApplicationTests {
                 .content("hello2")
                 .exchange();
 
-        await().atMost(5, TimeUnit.SECONDS)
+        await().atMost(3, TimeUnit.SECONDS)
                 .until(() -> mockMvcTester.get()
                         .uri("/receive")
                         .exchange()

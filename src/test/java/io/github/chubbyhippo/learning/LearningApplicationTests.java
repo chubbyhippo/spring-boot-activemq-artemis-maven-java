@@ -40,4 +40,20 @@ class LearningApplicationTests {
                 });
     }
 
+    @Test
+    @DisplayName("should send then receive message via endpoints")
+    void shouldSendThenReceiveMessageViaEndpoints() {
+        mockMvcTester.post()
+                .uri("/send")
+                .content("hello2")
+                .exchange();
+
+        await().atMost(5, TimeUnit.SECONDS)
+                .until(() -> mockMvcTester.get()
+                        .uri("/receive")
+                        .exchange()
+                        .getResponse()
+                        .getContentAsString()
+                        .contains("hello2"));
+    }
 }

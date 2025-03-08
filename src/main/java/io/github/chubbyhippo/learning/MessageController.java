@@ -1,5 +1,6 @@
 package io.github.chubbyhippo.learning;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +23,7 @@ public class MessageController {
         messageSenderService.send(message);
     }
 
-    @PostMapping("/receive")
+    @GetMapping("/receive")
     List<String> receive() {
         return messageListenerService.getReceivedMessages();
     }
